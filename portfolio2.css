@@ -1,0 +1,685 @@
+ 
+ :root {
+     --bg-color: #0f1115;
+     --card-bg: #161b22;
+     --text-color: #e6edf3;
+     --primary-color: #47f034;
+     /* Neon Green */
+     --secondary-color: #35c526;
+     --shadow: 0 4px 20px rgba(71, 240, 52, 0.15);
+     --font-main: 'Poppins', sans-serif;
+ }
+
+ * {
+     margin: 0px;
+     padding: 0px;
+     box-sizing: border-box;
+     font-family: var(--font-main);
+     scroll-behavior: smooth;
+ }
+
+ body {
+     background-color: var(--bg-color);
+     color: var(--text-color);
+     overflow-x: hidden;
+     /* Start hidden for loader effect */
+     animation: bodyFadeIn 0.5s ease-out 2s forwards;
+     opacity: 0;
+ }
+
+ /* Fades body in after loader finishes */
+ @keyframes bodyFadeIn {
+     to {
+         opacity: 1;
+     }
+ }
+
+ a {
+     text-decoration: none;
+     color: #ffffff;
+ }
+
+ ul {
+     list-style: none;
+ }
+
+
+ #preloader {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100vh;
+     background-color: var(--bg-color);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 9999;
+     /* Animation to hide loader */
+     animation: loaderFadeOut 0.5s ease-in-out 1.5s forwards;
+     pointer-events: none;
+     /* Allows clicks to pass through after hidden */
+ }
+
+ .loader {
+     width: 50px;
+     height: 50px;
+     border: 5px solid var(--card-bg);
+     border-top: 5px solid var(--primary-color);
+     border-radius: 50%;
+     animation: spin 1s linear infinite;
+ }
+
+ @keyframes spin {
+     0% {
+         transform: rotate(0deg);
+     }
+
+     100% {
+         transform: rotate(360deg);
+     }
+ }
+
+ @keyframes loaderFadeOut {
+     0% {
+         opacity: 1;
+     }
+
+     100% {
+         opacity: 0;
+         visibility: hidden;
+     }
+ }
+
+ 
+ .navbar {
+     background: rgba(15, 17, 21, 0.95);
+     backdrop-filter: blur(10px);
+     display: flex;
+     align-items: center;
+     padding: 20px 5%;
+     justify-content: space-between;
+     position: sticky;
+     top: 0;
+     z-index: 1000;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+ }
+
+ .logo {
+     font-size: 24px;
+     font-weight: 700;
+     color: var(--text-color);
+ }
+
+ .logo span {
+     color: var(--primary-color);
+ }
+
+ /* Desktop Menu */
+ .nav-links {
+     display: flex;
+     align-items: center;
+     gap: 30px;
+ }
+
+ .nav-links a {
+     font-size: 16px;
+     font-weight: 500;
+     color: var(--text-color);
+     transition: 0.3s;
+     position: relative;
+ }
+
+ .nav-links a::after {
+     content: '';
+     width: 0;
+     height: 2px;
+     background: var(--primary-color);
+     position: absolute;
+     left: 0;
+     bottom: -5px;
+     transition: 0.3s;
+ }
+
+ .nav-links a:hover::after,
+ .nav-links a.active::after {
+     width: 100%;
+ }
+
+ .nav-links a:hover {
+     color: var(--primary-color);
+ }
+
+ /* Hamburger Icon & Checkbox Logic */
+ .menu-toggle {
+     display: none;
+     cursor: pointer;
+     font-size: 28px;
+ }
+
+ #nav-check {
+     display: none;
+ }
+
+ /* Hidden checkbox */
+
+ /* Mobile Menu Styles */
+ @media (max-width: 768px) {
+     .menu-toggle {
+         display: block;
+         color: var(--text-color);
+     }
+
+     .nav-links {
+         position: fixed;
+         top: 70px;
+         left: -100%;
+         width: 100%;
+         height: calc(100vh - 70px);
+         background-color: var(--bg-color);
+         flex-direction: column;
+         justify-content: center;
+         transition: 0.4s ease;
+         border-top: 1px solid rgba(255, 255, 255, 0.1);
+     }
+
+     /* When checkbox is checked, show menu */
+     #nav-check:checked~.nav-links {
+         left: 0;
+     }
+ }
+
+ 
+ .intro {
+     width: 100%;
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     padding: 40px 5%;
+ }
+
+ .home {
+     width: 100%;
+     max-width: 1280px;
+     margin: 0 auto;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 40px;
+ }
+
+ .Home-info {
+     flex: 1;
+ }
+
+ .Home-info h1 {
+     font-size: clamp(36px, 5vw, 56px);
+     margin-bottom: 15px;
+     line-height: 1.1;
+     animation: slideLeft 1s ease-out 2.2s backwards;
+     /* Delayed animation */
+ }
+
+ .Home-info h1 span {
+     color: var(--primary-color);
+ }
+
+ .Home-info h2 {
+     font-size: clamp(24px, 3vw, 32px);
+     margin-bottom: 20px;
+     font-weight: 500;
+     animation: slideLeft 1s ease-out 2.4s backwards;
+ }
+
+ 
+ .typing-wrapper {
+     display: inline-block;
+     height: 40px;
+     overflow: hidden;
+     position: relative;
+     vertical-align: middle;
+     margin-left: 8px;
+ }
+
+ .typing-items {
+    display: flex;
+    flex-direction: column;
+    animation: slideUpText 10s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+}
+
+ .typing-text {
+     display: block;
+     color: var(--primary-color);
+     font-weight: 600;
+     font-size: clamp(20px, 2.5vw, 28px);
+     animation: slideUpText 8s linear infinite;
+ }
+
+ .typing-text {
+    display: block;
+    height: 40px;
+    line-height: 40px; /* Centers text vertically */
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: clamp(20px, 2.5vw, 28px);
+    white-space: nowrap;
+}
+
+
+
+ @keyframes slideUpText {
+    0%, 20% { transform: translateY(0); }
+    25%, 45% { transform: translateY(-40px); }
+    50%, 70% { transform: translateY(-80px); }
+    75%, 95% { transform: translateY(-120px); }
+    100% { transform: translateY(-160px); } /* Slides to the duplicate first item */
+}
+
+ 
+ .Home-info p {
+     font-size: 16px;
+     line-height: 1.7;
+     color: #a8b2d1;
+     margin-bottom: 30px;
+     max-width: 90%;
+     animation: slideLeft 1s ease-out 2.6s backwards;
+ }
+
+ .btn-cv {
+     display: inline-block;
+     padding: 12px 30px;
+     background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+     color: #0f1115;
+     font-weight: 600;
+     border-radius: 50px;
+     box-shadow: 0 4px 15px rgba(71, 240, 52, 0.4);
+     transition: 0.3s;
+     animation: slideLeft 1s ease-out 2.8s backwards;
+ }
+
+ .btn-cv:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 8px 25px rgba(71, 240, 52, 0.6);
+ }
+
+ /* Profile Image */
+ .profile-photo {
+     width: 350px;
+     height: 350px;
+     border-radius: 50%;
+     object-fit: cover;
+     border: 4px solid var(--primary-color);
+     box-shadow: 0 0 30px rgba(71, 240, 52, 0.3);
+     animation: float 6s ease-in-out infinite;
+ }
+
+ @keyframes float {
+     0% {
+         transform: translateY(0px);
+     }
+
+     50% {
+         transform: translateY(-20px);
+     }
+
+     100% {
+         transform: translateY(0px);
+     }
+ }
+
+ @keyframes slideLeft {
+     from {
+         opacity: 0;
+         transform: translateX(-50px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ /* Social Icons */
+ .btn {
+     display: flex;
+     flex-direction: column;
+     gap: 25px;
+     animation: slideRight 1s ease-out 3s backwards;
+ }
+
+ .btn a svg {
+     width: 32px;
+     height: 32px;
+     fill: var(--text-color);
+     transition: 0.3s;
+ }
+
+ .btn a svg:hover {
+     fill: var(--primary-color);
+     transform: scale(1.2);
+ }
+
+ @keyframes slideRight {
+     from {
+         opacity: 0;
+         transform: translateX(50px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ /* =========================================
+           5. SKILLS SECTION
+           ========================================= */
+ .section-container {
+     padding: 80px 5%;
+ }
+
+ .section-title {
+     font-size: 32px;
+     text-align: center;
+     margin-bottom: 60px;
+     color: var(--text-color);
+     text-shadow: 0 0 10px rgba(71, 240, 52, 0.3);
+     position: relative;
+     display: inline-block;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+
+ .section-title::after {
+     content: '';
+     display: block;
+     width: 60%;
+     height: 4px;
+     background: var(--primary-color);
+     margin: 10px auto 0;
+     border-radius: 2px;
+ }
+
+ .skills {
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 30px;
+ }
+
+ /* Scroll Animation Class */
+ .reveal {
+     opacity: 0;
+     transform: translateY(30px);
+     transition: all 0.8s ease;
+ }
+
+ /* Trigger animation when in view (Simulated with Delay for CSS-only, 
+           or rely on user scrolling interaction if browser supports :focus-within logic, 
+           but standard CSS animation delay is used here for sequential effect) */
+ .section-container .reveal:nth-child(1) {
+     animation: fadeInUp 0.8s ease 3.2s forwards;
+ }
+
+ .skills .card:nth-child(1) {
+     animation: fadeInUp 0.8s ease 3.4s forwards;
+ }
+
+ .skills .card:nth-child(2) {
+     animation: fadeInUp 0.8s ease 3.6s forwards;
+ }
+
+ .skills .card:nth-child(3) {
+     animation: fadeInUp 0.8s ease 3.8s forwards;
+ }
+
+ .skills .card:nth-child(4) {
+     animation: fadeInUp 0.8s ease 4.0s forwards;
+ }
+
+ @keyframes fadeInUp {
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ .card {
+     background-color: var(--card-bg);
+     padding: 30px 20px;
+     border-radius: 20px;
+     width: 250px;
+     text-align: center;
+     border: 1px solid rgba(255, 255, 255, 0.05);
+     box-shadow: var(--shadow);
+     transition: 0.3s;
+     opacity: 0;
+     /* Start hidden */
+ }
+
+ .card:hover {
+     transform: translateY(-10px);
+     border-color: var(--primary-color);
+ }
+
+ .card h3 {
+     font-size: 22px;
+     margin-bottom: 20px;
+     color: var(--text-color);
+ }
+
+ .card button {
+     display: block;
+     width: 100%;
+     padding: 10px;
+     margin: 8px 0;
+     background: rgba(71, 240, 52, 0.1);
+     color: var(--primary-color);
+     border: 1px solid var(--primary-color);
+     border-radius: 8px;
+     font-weight: 500;
+     cursor: pointer;
+     transition: 0.3s;
+ }
+
+ .card button:hover {
+     background: var(--primary-color);
+     color: #0f1115;
+ }
+
+ /* =========================================
+           6. EDUCATION SECTION
+           ========================================= */
+ .timeline {
+     width: 100%;
+     max-width: 900px;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     gap: 40px;
+ }
+
+ .timeline-item {
+     background-color: var(--card-bg);
+     border-radius: 20px;
+     padding: 30px;
+     display: flex;
+     align-items: center;
+     gap: 30px;
+     border: 1px solid rgba(255, 255, 255, 0.05);
+     box-shadow: var(--shadow);
+     transition: 0.3s;
+     opacity: 0;
+ }
+
+ .timeline-item:hover {
+     border-color: var(--primary-color);
+ }
+
+ /* Staggered Fade In for Education */
+ .timeline-item:nth-child(1) {
+     animation: fadeInUp 0.8s ease 4.2s forwards;
+ }
+
+ .timeline-item:nth-child(2) {
+     animation: fadeInUp 0.8s ease 4.4s forwards;
+ }
+
+ .timeline-item:nth-child(3) {
+     animation: fadeInUp 0.8s ease 4.6s forwards;
+ }
+
+ .timeline-img {
+     width: 150px;
+     height: 150px;
+     border-radius: 50%;
+     object-fit: cover;
+     flex-shrink: 0;
+     border: 3px solid var(--primary-color);
+ }
+
+ .timeline-content h1 {
+     font-size: 24px;
+     color: var(--primary-color);
+ }
+
+ .timeline-content h2 {
+     font-size: 20px;
+     color: #fff;
+     margin: 5px 0;
+ }
+
+ .timeline-content .grade {
+     display: inline-block;
+     background: rgba(255, 255, 255, 0.1);
+     padding: 4px 10px;
+     border-radius: 4px;
+     font-size: 14px;
+     margin-bottom: 10px;
+ }
+
+ .timeline-content p {
+     font-size: 15px;
+     color: #a8b2d1;
+     line-height: 1.6;
+     margin-bottom: 10px;
+ }
+
+ .duration {
+     font-size: 14px;
+     color: #fff;
+     font-weight: 600;
+     text-align: right;
+     display: block;
+ }
+
+ /* =========================================
+           7. FOOTER
+           ========================================= */
+ footer {
+     background-color: #0b0d10;
+     padding: 60px 5% 20px;
+     margin-top: 80px;
+     border-top: 1px solid rgba(255, 255, 255, 0.05);
+ }
+
+ .footer-content {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+ }
+
+ footer h1 {
+     font-size: 28px;
+     margin-bottom: 20px;
+ }
+
+ footer h1 span {
+     color: var(--primary-color);
+ }
+
+ .footer-nav ul {
+     display: flex;
+     gap: 25px;
+     margin-bottom: 30px;
+     flex-wrap: wrap;
+     justify-content: center;
+ }
+
+ .footer-nav a {
+     color: #a8b2d1;
+     transition: 0.3s;
+ }
+
+ .footer-nav a:hover {
+     color: var(--primary-color);
+ }
+
+ .footer-icons {
+     display: flex;
+     gap: 20px;
+     margin-bottom: 30px;
+ }
+
+ .footer-icons a svg {
+     width: 24px;
+     height: 24px;
+     fill: #a8b2d1;
+     transition: 0.3s;
+ }
+
+ .footer-icons a:hover svg {
+     fill: var(--primary-color);
+     transform: translateY(-3px);
+ }
+
+ .copyright {
+     font-size: 14px;
+     color: #555;
+     border-top: 1px solid #222;
+     width: 100%;
+     padding-top: 20px;
+     margin-top: 20px;
+ }
+
+ /* =========================================
+           8. RESPONSIVE DESIGN
+           ========================================= */
+ @media (max-width: 992px) {
+     .home {
+         flex-direction: column-reverse;
+         text-align: center;
+     }
+
+     .Home-info {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+     }
+
+     .btn {
+         flex-direction: row;
+     }
+
+     .typing-wrapper {
+         align-items: center;
+     }
+ }
+
+ @media (max-width: 768px) {
+     .timeline-item {
+         flex-direction: column;
+         text-align: center;
+     }
+
+     .timeline-img {
+         width: 120px;
+         height: 120px;
+     }
+
+     .card {
+         width: 100%;
+         max-width: 350px;
+     }
+ }
