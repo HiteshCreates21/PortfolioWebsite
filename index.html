@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+body {
+    background-color:#1f242d;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* 2. NAVBAR STYLING */
+.navbar {
+    background: #1f242d;      /* Removed duplicate background-color */
+    display: flex;
+    align-items: center;
+    padding: 25px 5%;
+    justify-content: space-between;
+    color: aliceblue;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 35px;
+}
+
+.navbar ul li a {
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    color: #47f034;;
+}
+
+/* 3. MAIN LAYOUT STYLING */
+
+
+.intro {
+    width: 100%;
+}
+
+.home {
+    
+    width: 84%;              
+    height: auto;
+    display: flex;            /* Flexbox makes them sit in a row */
+    flex-direction: row;      
+    align-items: center;      /* Vertically centers everything */
+    justify-content: space-between; /* Important: Pushes Text Left, Photo Center, Icons Right */
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* LEFT: Text Section */
+.Home-info {
+    max-width: 65%;
+    color: white;
+}
+
+.Home-info h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: aliceblue;
+}
+
+.Home-info h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    display: inline-block;
+    color: aliceblue;
+}
+.Home-info p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: aliceblue;
+    
+}
+
+.Home-info span {
+    display: inline-block;           /* Makes each role appear on a new line */
+    margin-top: 10px;
+    font-size: 28px;
+    color: transparent;
+    font-weight: 600;
+    -webkit-text-stroke: 2.0px #47f034; 
+    animation:displaytext 16s linear infinite;
+    animation-delay:calc(-4s * var(--i)) ;
+}
+
+@keyframes displaytext{
+
+    25%,
+    100%{
+        display:none;
+    }
+}
+
+.Home-info button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #35c526;
+    color: #ffffff;
+    border: none;
+    border-radius: 55px;
+    box-shadow: #333 2px 2px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.profile-photo {
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;       /* 50% makes a perfect circle */
+    border: 3px solid black;
+    object-fit: cover;        /* Ensures photo stays sharp/not stretched */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    
+}
+
+/* RIGHT: Icons Section */
+.btn {
+    display: flex;
+    flex-direction: column;   /* Stack icons vertically */
+    gap: 30px;                /* Space between icons */
+    justify-content: center;
+    margin-right: 10px;       /* Small padding from right edge */
+    
+}
+
+.btn svg {
+    height: 30px;
+    width: 30px;
+    transition: 0.3s;
+    cursor: pointer;
+    color: #47f034;
+    
+}
+
+.btn svg:hover {
+    fill: rgb(7, 220, 85);
+    transform: scale(1.5);
+}
+
+.CV {
+    margin-top: 20px;
+    margin-bottom: 45px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #35c526;
+    color: #ffffff;
+    border: none;
+    border-radius: 55px;
+    box-shadow: #333 2px 2px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+.CV-btn:hover {
+    transform: scale(1.5);
+}
+
+
+.skilltext {
+    text-align: center;
+    width: 84%;   
+    height: 10vh;          /* Matches the width of the .home section */
+    margin: 0 auto;         /* Centers the container so the left edge aligns */
+    text-align: left;       /* Ensures text starts from the left */
+    margin-bottom: 10px;    /* Adds space between the title and the cards */
+}
+
+.skilltext h1 {
+    font-size: 32px;        /* Matches the font size of the name in Home-info */
+    color: aliceblue;  
+    text-shadow: #07e107 2px 2px 8px;
+    text-align: center;
+    text-decoration: double underline;
+    border-bottom: #ffffff;
+    margin-top: 65px;
+    margin-bottom: 55px;
+}
+
+.skills{
+    margin: 10px auto;
+    padding: 10px auto;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     
+}
+
+.cards{
+    height: auto;
+    width: 100vw;
+    background-color: #1f242d; 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-inline-start: 0px;
+    
+    
+}
+
+.card1{
+    height: 45vh;
+    width: 20vw;
+    border: 2px #47f034 ;
+    display: inline-block;
+    margin: 6px;
+    border-radius: 20px;
+    box-shadow: #07e107 2px 2px 8px;
+    
+}
+
+.card2{
+    height: 45vh;
+    width: 20vw;
+    display: inline-block;
+    margin: 6px;
+    border-radius: 20px;
+    box-shadow: #07e107 2px 2px 8px;
+}
+
+.card3{
+    height: 45vh;
+    width: 20vw;
+    display: inline-block;
+    margin: 6px;
+    border-radius: 20px;
+    box-shadow: #07e107 2px 2px 8px;
+}   
+
+.card4{
+    height: 45vh;
+    width: 20vw;
+    display: inline-block;
+    margin: 6px;
+    border-radius: 20px;
+    box-shadow: #07e107 2px 2px 8px;
+}
+
+.card1, .card2, .card3, .card4 {
+    height: 45vh;
+    width: 20vw;
+    display: flex;              
+    flex-direction: column;    
+    justify-content: flex-start;
+    align-items: center;        /* Centers items horizontally */
+    gap: 15px;                  /* Space between elements */
+    padding-top: 20px;          /* Space from the top edge */
+    margin: 6px;
+    border-radius: 20px;
+    box-shadow: #07e107 2px 2px 8px;
+    background-color: #1f242d;
+    overflow: hi;
+}
+
+.card1, .card2, .card3, .card4 h1{
+    text-align: center;
+    color: aliceblue;
+    margin-top: 5px;
+}
+
+.card1 h1, .card2 h1, .card3 h1, .card4 h1 {
+    text-align: center;
+    color: aliceblue;
+    margin-bottom: 10px;        /* separation from the buttons */
+    margin-top: 0;
+    font-size: 24px;
+}
+
+    .cards button {
+    width: 70%;                 
+    padding: 10px 15px;         /* Inner spacing */
+    border-radius: 50px;        /* Rounded edges */
+    border: none;
+    box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.5); 
+    background-color: #35c526;  
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.cards button:hover {
+    transform: scale(1.05);
+    background-color: #47f034;
+}
+
+.college img, .class10 img, .class12 img {
+    height: auto;
+    width: 40vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    }
+
+.heading{
+    font-size: 32px;        
+    text-shadow: #07e107 2px 2px 8px;
+    text-align: center;
+    margin-top: 65px;
+    margin-bottom: 55px;
+    text-decoration: double underline;
+    
+}
+
+
+
+.college h2, .class10 h2, .class12 h2 {
+    font-size: 24px;
+    color: #47f034;
+    margin-bottom: 10px;
+    margin-left: 15px;
+ 
+}
+
+
+.college h1, .class10 h1, .class12 h1{
+    font-size: 28px;
+    color: azure;
+    padding: 15px;
+
+} 
+
+.college h3, .class10 h3, .class12 h3{
+    font-size: 20px;
+    color: lightgray;
+    margin-bottom: 15px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.college p, .class10 p, .class12 p{
+    font-size: 18px;
+    color: #d3d3d3;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.college, .class10, .class12 {
+    margin-bottom: 40px;
+    border: #07e107 2px solid;
+    border-radius: 20px;
+    box-shadow: #07e107 2px 2px 8px;
+}
+
+/* --- EDUCATION SECTION REPAIR --- */
+
+.timeline {
+    width: 84%;           /* Increased from 50vw to match your Home section */
+    height: 650px;        /* Fixed height to ensure content fits */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth;
+    gap: 0;
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+/* Hide scrollbar for Chrome/Safari */
+.timeline::-webkit-scrollbar {
+    display: none;
+}
+
+.college, .class12, .class10 {
+    flex: 0 0 100%;           
+    width: 100%;
+    min-width: 100%;
+    scroll-snap-align: center; 
+    scroll-snap-stop: always;  
+    background-color: #1f242d;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border: #07e107 2px solid; /* Moved borders here from the global rule */
+    border-radius: 20px;
+    box-shadow: #07e107 2px 2px 8px;
+    overflow-y: auto; /* Allows internal scroll if text is too long */
+}
+
+/* PAGINATION DOTS STYLING */
+.dots-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #555;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background-color: #47f034;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px #47f034;
+}
+
+.college img, .class10 img, .class12 img{
+    margin: 20px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;        /* Ensures photo stays sharp/not stretched */
+    box-shadow: 0 0 20px #07e107 ;
+}
+
+.footer-btn {
+    display: flex;
+    flex-direction: row;   /* Stack icons horizontally */
+    gap: 30px;                /* Space between icons */
+    justify-content: center;
+    width: 100vw;   
+    
+}
+
+.footer-btn svg {
+    height: 30px;
+    width: 30px;;
+    transition: 0.3s;
+    cursor: pointer;
+    color: #47f034;
+}
+
+.footer-btn svg:hover {
+    fill: rgb(7, 220, 85);
+    transform: scale(1.5);
+}
+ 
+footer {
+    background-color: #1f242d;
+    padding: 20px 0;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: #07e107 2px 2px 8px;
+}
+
+footer h1 {
+    font-size: 32px;        /* Matches the font size of the name in Home-info */
+    color: aliceblue;  
+    text-shadow: #07e107 2px 2px 8px;
+    padding: 40px;
+}
+
+.portfolio p {
+    font-size: 18px;
+    color: #d3d3d3;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+footer .about ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+
+
+    </style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Hitesh Verma</title>
+    <!-- Importing Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="portfolio2.css">
+</head>
+
+<body>
+
+    <!-- 1. PRELOADER -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">PORTFOLIO<span>.</span></a>
+            
+            <!-- Mobile Menu Checkbox Hack -->
+            <input type="checkbox" id="nav-check">
+            <label for="nav-check" class="menu-toggle">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </label>
+
+            <!-- Navigation Links (Slide in on mobile via CSS) -->
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <div class="intro" id="home">
+            <div class="home">
+                
+                <div class="Home-info">
+                    <h3>Hello, It's Me</h3>
+                    <h1>HITESH <span>VERMA</span></h1>
+                    
+                    <h2>I'm a 
+                        <div class="typing-wrapper">
+                            <!-- Duplicate spans for animation loop -->
+                            <span class="typing-text">Electronics Engineer</span>
+                            <span class="typing-text">Web Developer</span>
+                            <span class="typing-text">Coding Enthusiast</span>
+                            <span class="typing-text">Robotics Lover</span>
+                        </div>
+                    </h2>
+                    
+                    <p>I am an Electronics and Telecommunication Engineering undergraduate at the Army Institute of Technology, Pune. Deeply passionate about technology with a keen interest in Robotics and a strong foundation in C++. Currently, I am also focused on web development, actively mastering backend technologies.</p>
+                    
+                    <a href="https://drive.google.com/drive/u/0/folders/1WMz506yw0mU6LwpjHsW6gKVbC5gHmpkB" target="_blank" class="btn-cv">DOWNLOAD CV</a>
+                </div>
+
+                <!-- Placeholder Image -->
+                <img src="photo.jpg" alt="Hitesh Verma" class="profile-photo">
+
+                <div class="btn">
+                    <a href="https://www.linkedin.com/in/hiteshverma2108" target="_blank"><svg viewBox="0 0 448 512"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"></path></svg></a>
+                    <a href="https://www.instagram.com/its__.hitesh/" target="_blank"><svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></a>
+                    <a href="mailto:vermahitesh230@gmail.com" target="_blank"><svg viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"></path></svg></a>
+                    <a href="https://github.com/HiteshCreates21" target="_blank"><svg viewBox="0 0 576 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section-container">
+        <div class="skilltext reveal">
+            <h2 class="section-title">MY SKILLS</h2>
+        </div>
+
+        <div class="skills">
+            <div class="card">
+                <h3>Frontend</h3>
+                <button>HTML5</button>
+                <button>CSS3</button>
+                <button>React.js</button>
+                <button>JavaScript</button>
+            </div>
+
+            <div class="card">
+                <h3>Backend</h3>
+                <button>Node.js</button>
+                <button>Python</button>
+            </div>
+
+            <div class="card">
+                <h3>Languages</h3>
+                <button>C++</button>
+                <button>Python</button>
+            </div>
+
+            <div class="card">
+                <h3>Electronics</h3>
+                <button>Arduino</button>
+                <button>IoT</button>
+                <button>VHDL</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <main id="education" class="section-container">
+        <div class="reveal">
+            <h2 class="section-title">EDUCATION</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <img src="AIT.webp" alt="AIT Logo" class="timeline-img">
+                <div class="timeline-content">
+                    <h1>Army Institute Of Technology</h1>
+                    <h2>B.Tech, Electronics and Telecommunication</h2>
+                    <span class="duration">JULY 2025 - JULY 2029</span>
+                    <p>Pursuing B.Tech at AIT, Pune. Active member of the Centre of Excellence in Automation and Robotics club. Focused on building projects to solve real-world problems.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <img src="KV JJN.jpeg" alt="KV Logo" class="timeline-img">
+                <div class="timeline-content">
+                    <h1>Kendriya Vidyalaya Jhunjhunu</h1>
+                    <h2>Class XII (CBSE)</h2>
+                    <span class="grade">Grade: 87.6%</span>
+                    <span class="duration">2022 - 2023</span>
+                    <p>Completed Higher Secondary education with a focus on Science stream.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <img src="kv jjn 2.webp" alt="KV Logo" class="timeline-img">
+                <div class="timeline-content">
+                    <h1>Kendriya Vidyalaya Jhunjhunu</h1>
+                    <h2>Class X (CBSE)</h2>
+                    <span class="grade">Grade: 90.8%</span>
+                    <span class="duration">2020 - 2021</span>
+                    <p>Completed Secondary education with academic excellence.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="about">
+        <div class="footer-content">
+            <h1>HITESH <span>VERMA</span></h1>
+
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#education">Education</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-icons">
+                <a href="https://www.linkedin.com/in/hiteshverma2108" target="_blank"><svg viewBox="0 0 448 512"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"></path></svg></a>
+                <a href="https://www.instagram.com/colonel__2108/" target="_blank"><svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></a>
+                <a href="https://github.com/HiteshCreates21" target="_blank"><svg viewBox="0 0 576 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a>
+            </div>
+
+            <div class="copyright">
+                <p>© Hitesh Verma || All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
